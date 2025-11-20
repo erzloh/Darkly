@@ -1,0 +1,23 @@
+# Cross-Site Scripting (XSS)
+
+## Description
+
+This challenge involves a Cross-Site Scripting (XSS) vulnerability, where the application fails to properly sanitize user input before reflecting it back into the page. This allows an attacker to inject malicious scripts that can be executed in the context of other users' browsers. For example, a maliciously injected javascript script feedback form could steal cookies or perform actions on behalf of the user.
+
+## How to Get the Flag
+
+1. Navigate to the feedback page:
+
+   ```
+   http://localhost/?page=feedback
+   ```
+2. In the **Name** input field, entering `script` or `alert` causes the application to behave unexpectedly.
+3. Submitting the form with these inputs triggers the vulnerable behavior and reveals the flag.
+
+## Prevention of Vulnerability
+
+To prevent XSS:
+
+* Always escape user input before rendering it in HTML.
+* Use server-side validation, not just client-side checks.
+* Implement a Content Security Policy (CSP) to reduce script injection impact.
